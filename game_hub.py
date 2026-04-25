@@ -1,6 +1,6 @@
 import random
 
-# ===================== DICE ASCII =====================
+
 dice_art = r"""
   ____
  /\' .\    _____
@@ -10,13 +10,13 @@ dice_art = r"""
           \'__'\/
 """
 
-# ===================== RPS ASCII =====================
+
 rps_art = r"""
 ✊  ✋  ✌️
 Rock Paper Scissors
 """
 
-# ===================== DICE GAME =====================
+
 def dice_roll():
     print(dice_art)
     print("🎲 Welcome to Dice Roll!\n")
@@ -25,7 +25,7 @@ def dice_roll():
     print(f"You rolled: {roll} 🎲")
 
 
-# ===================== RPS GAME =====================
+
 def rock_paper_scissors():
     print(rps_art)
     print("\nChoose:")
@@ -65,7 +65,7 @@ def rock_paper_scissors():
         print("💻 Computer wins!")
 
 
-# ===================== MAIN MENU =====================
+
 def main():
     print("🎮 Welcome to Game Hub!\n")
     print("Choose a game:")
