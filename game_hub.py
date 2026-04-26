@@ -1,15 +1,13 @@
 import random
 import os
 
-def clear_screen():
-    # Clears the terminal so the menu stays at the top
-    os.system('cls' if os.name == 'nt' else 'clear')
+
 
 #GAME FUNCTIONS
 
 def dice_roll():
     while True:
-        clear_screen()
+        
         print("==============================")
         print("      DICE ROLL SETTINGS      ")
         print("==============================\n")
@@ -26,7 +24,7 @@ def dice_roll():
 def stone_paper_scissors():
     options = ["stone", "paper", "scissors"]
     while True:
-        clear_screen()
+        
         print("==============================")
         print("    STONE PAPER SCISSORS      ")
         print("==============================\n")
@@ -61,7 +59,7 @@ def stone_paper_scissors():
 #  MAIN HUB LOOP 
 
 while True:
-    clear_screen()
+  
     print("******************************")
     print("          GAME HUB            ")
     print("******************************")
