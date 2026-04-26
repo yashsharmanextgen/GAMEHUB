@@ -1,87 +1,84 @@
 import random
+import os
 
+def clear_screen():
+    # Clears the terminal so the menu stays at the top
+    os.system('cls' if os.name == 'nt' else 'clear')
 
-dice_art = r"""
-  ____
- /\' .\    _____
-/: \___\  / .  /\
-\' / . / /____/..\
- \/___/  \'  '\  /
-          \'__'\/
-"""
-
-
-rps_art = r"""
-✊  ✋  ✌️
-Rock Paper Scissors
-"""
-
+#GAME FUNCTIONS
 
 def dice_roll():
-    print(dice_art)
-    print("🎲 Welcome to Dice Roll!\n")
+    while True:
+        clear_screen()
+        print("==============================")
+        print("      DICE ROLL SETTINGS      ")
+        print("==============================\n")
+        
+        input("Press Enter to roll the dice...")
+        
+        number = random.randint(1, 6)
+        print(f"\n[!] The dice landed on: {number}")
+        
+        choice = input("\nRoll again? (y/n): ").lower()
+        if choice != 'y':
+            break
 
-    roll = random.randint(1, 6)
-    print(f"You rolled: {roll} 🎲")
+def stone_paper_scissors():
+    options = ["stone", "paper", "scissors"]
+    while True:
+        clear_screen()
+        print("==============================")
+        print("    STONE PAPER SCISSORS      ")
+        print("==============================\n")
+        print("Options: stone | paper | scissors")
+        
+        user_move = input("Enter your move: ").lower()
+        
+        if user_move not in options:
+            print("Invalid move! Please type stone, paper, or scissors.")
+            input("Press Enter to try again...")
+            continue
+            
+        comp_move = random.choice(options)
+        print(f"\nYour move: {user_move}")
+        print(f"Computer:  {comp_move}")
+        print("-" * 20)
+        
+        # Win/Loss Logic
+        if user_move == comp_move:
+            print("RESULT: It's a draw!")
+        elif (user_move == "stone" and comp_move == "scissors") or \
+             (user_move == "paper" and comp_move == "stone") or \
+             (user_move == "scissors" and comp_move == "paper"):
+            print(f"RESULT: You Win! {user_move.capitalize()} beats {comp_move}.")
+        else:
+            print(f"RESULT: You Lose! {comp_move.capitalize()} beats {user_move}.")
+            
+        choice = input("\nPlay another round? (y/n): ").lower()
+        if choice != 'y':
+            break
 
+#  MAIN HUB LOOP 
 
-
-def rock_paper_scissors():
-    print(rps_art)
-    print("\nChoose:")
-    print("1 → ✊ Rock")
-    print("2 → ✋ Paper")
-    print("3 → ✌️ Scissors")
-
-    user_input = input("Enter your choice (1/2/3): ")
-
-    if user_input not in ["1", "2", "3"]:
-        print("❌ Invalid choice! Please select 1, 2, or 3.")
-        return
-
-    choices = {
-        "1": "✊ Rock",
-        "2": "✋ Paper",
-        "3": "✌️ Scissors"
-    }
-
-    user_choice = choices[user_input]
-    computer_input = random.choice(["1", "2", "3"])
-    computer_choice = choices[computer_input]
-
-    print(f"\nYou chose: {user_choice}")
-    print(f"Computer chose: {computer_choice}\n")
-
-    # Game logic
-    if user_input == computer_input:
-        print("🤝 It's a draw!")
-    elif (
-        (user_input == "1" and computer_input == "3") or
-        (user_input == "2" and computer_input == "1") or
-        (user_input == "3" and computer_input == "2")
-    ):
-        print("🎉 You win!")
-    else:
-        print("💻 Computer wins!")
-
-
-
-def main():
-    print("🎮 Welcome to Game Hub!\n")
-    print("Choose a game:")
-    print("1 → Dice Roll 🎲")
-    print("2 → Rock Paper Scissors ✊✋✌️")
-
-    choice = input("Enter your choice (1/2): ")
-
-    if choice == "1":
+while True:
+    clear_screen()
+    print("******************************")
+    print("          GAME HUB            ")
+    print("******************************")
+    print("1. Dice Roll")
+    print("2. Stone Paper Scissors")
+    print("3. Exit")
+    print("******************************")
+    
+    user_input = input("\nSelect a game (1-3): ")
+    
+    if user_input == "1":
         dice_roll()
-    elif choice == "2":
-        rock_paper_scissors()
+    elif user_input == "2":
+        stone_paper_scissors()
+    elif user_input == "3":
+        print("\nExiting GAME HUB... Goodbye!")
+        break
     else:
-        print("❌ Invalid choice! Please select 1 or 2.")
-
-
-# Run program
-if __name__ == "__main__":
-    main()
+        print("\nError: Please enter 1, 2, or 3.")
+        input("Press Enter to continue...")
